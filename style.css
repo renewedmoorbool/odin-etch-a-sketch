@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#canvas {
+    margin: 50px;
+
+    border: 1px solid black;
+    width: 480px;
+    height: 480px;
+}
+
+.row {
+    display: flex;
+}
+
+.singleSquare {
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+}
