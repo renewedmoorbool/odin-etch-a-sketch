@@ -4,11 +4,13 @@ const canvas = document.getElementById('canvas');
 const gridClearButton = document.getElementById('clearMode');
 const gridCancelButton = document.getElementById('cancelMode');
 const gridChangeColorButton = document.getElementById('changeColor');
+const colourPicker = document.getElementById('colorPicker');
 const rainbowModeButton = document.getElementById('rainbowMode');
 
 let internalDimension = 16;
 let color = 'black';
 let i, k = 0;
+
 
 let clicked = false;
 
@@ -80,7 +82,7 @@ gridCancelButton.addEventListener('click', function(e) {
 
     else {
         gridCancelButton.classList.remove('active');
-        
+
         for(let i = 0; i < squares.length; i++) {
 
             squares[i].removeEventListener('mouseover', function(e) {
@@ -96,10 +98,11 @@ gridCancelButton.addEventListener('click', function(e) {
     }
 });
 
-gridChangeColorButton.addEventListener('click', function(e) {
+colourPicker.addEventListener('input', function(e) {
     const squares = document.getElementsByClassName('singleSquare');
-    let newColour = prompt('Insert a new colour');
-
+    let newColour = colourPicker.value;
+    color = newColour;
+    
     for(let j = 0; j < squares.length; j++) {
         squares[j].removeEventListener('mouseover', function(e) {
             e.target.style.backgroundColor = color;
