@@ -18,6 +18,7 @@ slider.oninput = function() {
     let showZone = document.getElementById('sliderValue');
     showZone.textContent = `${slider.value} x ${slider.value}`;
     internalDimension = parseInt(slider.value);
+    gridCancelButton.classList.remove('active');
 
     displayGrid(internalDimension, color);
 }
@@ -57,6 +58,7 @@ displayGrid(internalDimension, color);
 
 
 gridClearButton.addEventListener('click', function(e) {
+    gridCancelButton.classList.remove('active');
     displayGrid(internalDimension, color);
 });
 
@@ -99,6 +101,8 @@ gridCancelButton.addEventListener('click', function(e) {
 });
 
 colourPicker.addEventListener('input', function(e) {
+    gridCancelButton.classList.remove('active');
+
     const squares = document.getElementsByClassName('singleSquare');
     let newColour = colourPicker.value;
     color = newColour;
@@ -115,8 +119,8 @@ colourPicker.addEventListener('input', function(e) {
 });
 
 rainbowModeButton.addEventListener('click', function(e) {
+    gridCancelButton.classList.remove('active');
 
-    
     const squares = document.getElementsByClassName('singleSquare');
 
     for(let j = 0; j < squares.length; j++) {
