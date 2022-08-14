@@ -6,9 +6,15 @@
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
 body {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 h1 {
@@ -21,6 +27,8 @@ h1 {
 }
 
 .main-container {
+    
+    flex: 1;
     display: flex;
 }
 
@@ -61,7 +69,7 @@ h1 {
 
 .actions-li button {
     border-radius: 1px;
-    background-color: rgb(78, 78, 215);
+    background-color: rgb(57, 57, 187);
     color: white;
     
 
@@ -82,4 +90,18 @@ h1 {
 
 .active {
     background-color: brown !important;
+}
+
+.footer {
+    background-color: rgb(54, 76, 145);
+    color: white;
+
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Ubuntu';
+    text-align: center;
+
+    padding: 20px;
+   
+    
 }
