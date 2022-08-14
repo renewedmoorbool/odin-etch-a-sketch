@@ -10,28 +10,29 @@
 
 <body>
     
-    
-    <div id = 'canvas'>
+    <h1> Etch-a-sketch </h1>
+    <div class = 'main-container'>
+            <div id = 'canvas'>
 
+            </div>
+
+            <div class = 'actions'>
+                <ul class = 'actions-li'>
+                    <li> <button id = 'rainbowMode'> Rainbow Mode                </button> </li>
+
+                    <br>
+                    <input type = 'color' id = 'colorPicker'> Change colour  </input>
+                    <li> <button id = 'cancelMode'>  Cancel Mode                 </button> </li>
+                    <li> <button id = 'clearMode'>   Clear Mode                  </button> </li>
+
+
+                    <br><br><br>
+                    <h4> Choose the grid dimension </h4>
+                    <input id = 'slider' type = 'range' min = '16' max = '64' value = '16'>
+                    <p id = 'sliderValue'>16 x 16</p>
+                </ul>
+            </div>
     </div>
-
-    <div class = 'actions'>
-        <ul class = 'actions-li'>
-            <li> <button id = 'rainbowMode'> Rainbow Mode                </button> </li>
-
-            <br>
-            <input type = 'color' id = 'colorPicker'> Change colour  </input>
-            <li> <button id = 'cancelMode'>  Cancel Mode                 </button> </li>
-            <li> <button id = 'clearMode'>   Clear Mode                  </button> </li>
-
-
-            <br><br><br>
-            <h4> Choose the grid dimension </h4>
-            <input id = 'slider' type = 'range' min = '16' max = '64' value = '16'>
-            <p id = 'sliderValue'>16 x 16</p>
-        </ul>
-    </div>
-
     <script src = 'logic.js'>
     </script>
 </body>
