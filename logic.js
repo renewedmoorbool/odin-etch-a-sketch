@@ -1,7 +1,6 @@
 const slider = document.getElementById('slider');
 
 const canvas = document.getElementById('canvas');
-const gridExtentButton = document.getElementById('gridExtent');
 const gridClearButton = document.getElementById('clearMode');
 const gridCancelButton = document.getElementById('cancelMode');
 const gridChangeColorButton = document.getElementById('changeColor');
@@ -16,7 +15,9 @@ let clicked = false;
 slider.oninput = function() {
     let showZone = document.getElementById('sliderValue');
     showZone.textContent = `${slider.value} x ${slider.value}`;
-    displayGrid(parseInt(slider.value), color);
+    internalDimension = parseInt(slider.value);
+
+    displayGrid(internalDimension, color);
 }
 
 function clearGrid(grid) {
@@ -35,13 +36,12 @@ function displayGrid(dimension, color = 'black') {
         {
             let singleSquare = document.createElement('div');
             singleSquare.classList.add('singleSquare');
-            singleSquare.style.width = `${canvas.offsetWidth / internalDimension}px`;
-            singleSquare.style.height = `${canvas.offsetHeight / internalDimension}px`;
+            singleSquare.style.width = `${canvas.offsetWidth / dimension}px`;
+            singleSquare.style.height = `${canvas.offsetHeight / dimension}px`;
 
             singleSquare.addEventListener('mouseover', function(e) {
                 e.target.style.backgroundColor = color;
             });
-
 
             rowDiv.appendChild(singleSquare);
         }
@@ -54,16 +54,6 @@ displayGrid(internalDimension, color);
 
 
 
-gridExtentButton.addEventListener('click', function(e) {
-    let dimension = prompt('User, insert a dimension [Max 100]: ');
-
-    if(dimension > 100)
-        dimension = prompt('User, that\'s too large! Insert another dimension: ');
-
-    internalDimension = parseInt(dimension);
-    displayGrid(internalDimension, color);
-});
-
 gridClearButton.addEventListener('click', function(e) {
     displayGrid(internalDimension, color);
 });
@@ -73,7 +63,8 @@ gridCancelButton.addEventListener('click', function(e) {
     cancelColor = 'white';
 
     if(clicked == false) {
-            
+            gridCancelButton.classList.add('active');
+
             for(let j = 0; j < squares.length; j++) {
                 squares[j].removeEventListener('mouseover', function(e) {
                     e.target.style.backgroundColor = color;
@@ -88,6 +79,8 @@ gridCancelButton.addEventListener('click', function(e) {
     }
 
     else {
+        gridCancelButton.classList.remove('active');
+        
         for(let i = 0; i < squares.length; i++) {
 
             squares[i].removeEventListener('mouseover', function(e) {
