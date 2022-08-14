@@ -1,3 +1,5 @@
+const slider = document.getElementById('slider');
+
 const canvas = document.getElementById('canvas');
 const gridExtentButton = document.getElementById('gridExtent');
 const gridClearButton = document.getElementById('clearMode');
@@ -5,25 +7,24 @@ const gridCancelButton = document.getElementById('cancelMode');
 const gridChangeColorButton = document.getElementById('changeColor');
 const rainbowModeButton = document.getElementById('rainbowMode');
 
-let originalDimension = 16;
-let internalDimension = originalDimension;
-let clicked = false;
+let internalDimension = 16;
 let color = 'black';
 let i, k = 0;
 
+let clicked = false;
 
+slider.oninput = function() {
+    let showZone = document.getElementById('sliderValue');
+    showZone.textContent = `${slider.value} x ${slider.value}`;
+    displayGrid(parseInt(slider.value), color);
+}
 
 function clearGrid(grid) {
     grid.innerHTML = '';
 }
 
-
-
 function displayGrid(dimension, color = 'black') {
-    /* Every time the function gets called the previous 
-       grid, if existing, must be canceled */
-    
-    
+
     clearGrid(canvas);
 
     for(i = 0; i < dimension; i++) {
@@ -49,10 +50,7 @@ function displayGrid(dimension, color = 'black') {
     }
 }
 
-
-
 displayGrid(internalDimension, color);
-
 
 
 
