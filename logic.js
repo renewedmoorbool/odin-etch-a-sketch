@@ -59,6 +59,8 @@ displayGrid(internalDimension, color);
 
 gridClearButton.addEventListener('click', function(e) {
     gridCancelButton.classList.remove('active');
+    rainbowModeButton.classList.remove('active');
+
     displayGrid(internalDimension, color);
 });
 
@@ -68,7 +70,8 @@ gridCancelButton.addEventListener('click', function(e) {
 
     if(clicked == false) {
             gridCancelButton.classList.add('active');
-
+            rainbowModeButton.classList.remove('active');
+            
             for(let j = 0; j < squares.length; j++) {
                 squares[j].removeEventListener('mouseover', function(e) {
                     e.target.style.backgroundColor = color;
@@ -119,11 +122,33 @@ colourPicker.addEventListener('input', function(e) {
 });
 
 rainbowModeButton.addEventListener('click', function(e) {
-    gridCancelButton.classList.remove('active');
-
     const squares = document.getElementsByClassName('singleSquare');
 
+    if(rainbowModeButton.classList.contains('active')) {
+
+        rainbowModeButton.classList.remove('active');
+        for(let j = 0; j < squares.length; j++) {
+            
+            squares[j].removeEventListener('mouseover', function(e) {
+                let rainbowColours = ['violet', 'indigo', 'blue', 'green', 'yellow', 'orange', 'red'];
+                let newColour = rainbowColours[Math.floor(Math.random() * rainbowColours.length)];
+                e.target.style.backgroundColor = newColour;
+            })
+    
+            squares[j].addEventListener('mouseover', function(e) {
+                e.target.style.backgroundColor = color;
+            })
+        }
+
+
+    } else {
+    
+    
+    rainbowModeButton.classList.add('active');
+    
+
     for(let j = 0; j < squares.length; j++) {
+
         squares[j].removeEventListener('mouseover', function(e) {
             e.target.style.backgroundColor = color;
         });
@@ -134,5 +159,5 @@ rainbowModeButton.addEventListener('click', function(e) {
             e.target.style.backgroundColor = newColour;
         })
     }
-
+}
 });
